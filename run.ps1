@@ -76,15 +76,15 @@ $IntSleep = $env:FWDELAY       # Delay in seconds between tries
 # Code blocks for supporting functions
 #--------------------------------------------------------------------------
 
-Function Send-AlertMessage ($Message)
-{
-    $MailServers = (Resolve-DnsName -Type MX -Name $env:FWMAILDOMAINMX).NameExchange
-    $MailFrom = $env:FWMAILFROM
-    $MailTo = $env:FWMAILTO
+#Function Send-AlertMessage ($Message)
+#{
+#    $MailServers = (Resolve-DnsName -Type MX -Name $env:FWMAILDOMAINMX).NameExchange
+#    $MailFrom = $env:FWMAILFROM
+#    $MailTo = $env:FWMAILTO
 
-    try { Send-MailMessage -SmtpServer $MailServers[1] -From $MailFrom -To $MailTo -Subject $Message -Body $Message }
-    catch { Send-MailMessage -SmtpServer $MailServers[2] -From $MailFrom -To $MailTo -Subject $Mesage -Body $Message }
-}
+#    try { Send-MailMessage -SmtpServer $MailServers[1] -From $MailFrom -To $MailTo -Subject $Message -Body $Message }
+#    catch { Send-MailMessage -SmtpServer $MailServers[2] -From $MailFrom -To $MailTo -Subject $Mesage -Body $Message }
+#}
 
 Function Test-VMStatus ($VM, $FWResourceGroup) 
 {
@@ -147,7 +147,7 @@ Function Start-Failover
     }
   }
 
-  Send-AlertMessage -message "NVA Alert: Failover to Secondary FW2"
+  #Send-AlertMessage -message "NVA Alert: Failover to Secondary FW2"
 
 }
 
@@ -189,7 +189,7 @@ Function Start-Failback
     }
   }
 
-  Send-AlertMessage -message "NVA Alert: Failback to Primary FW1"
+  #Send-AlertMessage -message "NVA Alert: Failback to Primary FW1"
 
 }
 
